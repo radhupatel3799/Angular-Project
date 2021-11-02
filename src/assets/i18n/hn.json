@@ -1,0 +1,31 @@
+{
+  "login": {
+    "title": "लॉगइन फॉर्म",
+    "email.label": "ईमेल",
+    "password.label": "पासवर्ड",
+    "buttonLogin.label": "लॉग इन करें",
+    "buttonRegister.label": "रजिस्टर करें",
+    "hello.label": "नमस्ते",
+    "loginmsg.label": "आपने सफलतापूर्वक लॉग इन किया है",
+    "home.title": "घर",
+    "user.title": "उपयोगकर्ताओं",
+    "usersData.title": "उपयोगकर्ता का डेटा",
+    "logout.title": "लॉग आउट",
+    "dropdown.title": "भाषा चुने",
+    "test.title": "परीक्षण मॉड्यूल",
+    "english.title": "अंग्रेज़ी",
+    "hindi.title": "हिंदी",
+    "userList.label": "उपयोगकर्ता सूची",
+    "name.label": "नाम",
+    "username.label": "उपयोगकर्ता नाम",
+    "phone_number.label": "फ़ोन नंबर",
+    "gender.label": "लिंग",
+    "add.label": "उपयोगकर्ता जोड़ें",
+    "edit.label": "संपादित करें",
+    "delete.label": "मिटायें",
+    "modal.title": "प्रोफ़ाइल को नवीनतम बनाओ",
+    "cancel.label": "रद्द करें",
+    "add_second": "दूसरा जोड़ें",
+    "add_third": "तीसरा जोड़ें"
+  }
+}

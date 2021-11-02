@@ -1,0 +1,279 @@
+<div class="row mt-3">
+  <div class="col-md-6">
+    <h4 class="mt-2">{{ 'login.userList.label' | translate }}</h4>
+  </div>
+  <div class="col-md-2">
+    <label>{{ 'login.name.label' | translate }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="search"
+      [(ngModel)]="searchText"
+      autocomplete="off"
+      placeholder="Start searching "
+    />
+  </div>
+  <div class="col-md-2">
+    <label>{{ 'login.phone_number.label' | translate }}</label>
+    <input
+      class="form-control"
+      type="text"
+      name="search"
+      [(ngModel)]="searchNumber"
+      autocomplete="off"
+      placeholder="Start searching "
+    />
+  </div>
+  <div class="col-md-2 mt-4">
+    <a routerLink="/user-add" class="btn btn-sm btn-success mb-2">
+      {{ 'login.add.label' | translate }}
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped mt-5">
+      <thead>
+        <tr>
+          <th style="width: 20%;">{{ 'login.name.label' | translate }}</th>
+          <th style="width: 20%;">{{ 'login.username.label' | translate }}</th>
+          <th style="width: 10%;">{{ 'login.gender.label' | translate }}</th>
+          <th style="width: 20%;">{{ 'login.email.label' | translate }}</th>
+          <th style="width: 15%;">{{ 'login.name.label' | translate }}</th>
+          <th style="width: 15%;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let user of users
+              | filter: searchText
+              | filter: searchNumber
+              | paginate: { itemsPerPage: 5, currentPage: p }
+          "
+        >
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.gender }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone_number }}</td>
+          <td>
+            <!-- <a routerLink="/edit/{{ user._id }}" class="btn btn-primary">
+              Edit
+            </a> -->
+            <button (click)="open(user._id, content)" class="btn btn-primary">
+              {{ 'login.edit.label' | translate }}
+            </button>
+            <button
+              (click)="deleteUser(user._id)"
+              class="btn btn-danger btn-delete-user"
+            >
+              {{ 'login.delete.label' | translate }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+<!-- <table datatable [dtOptions]="dtOptions" class="row-border hover">
+  <thead>
+    <tr>
+      <th style="width: 20%;">Name</th>
+      <th style="width: 20%;">User Name</th>
+      <th style="width: 10%;">Gender</th>
+      <th style="width: 20%;">Email</th>
+      <th style="width: 15%;">PhoneNumber</th>
+      <th style="width: 15%;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users | filter:searchText">
+      <td>{{ user.name }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.gender }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone_number }}</td>
+      <td style="white-space: nowrap;">
+        <a routerLink="/edit/{{ user._id }}" class="btn btn-primary">
+          Edit
+        </a>
+        <button
+          (click)="deleteUser(user._id)"
+          class="btn btn-danger btn-delete-user"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table> -->
+<!-- <ng-container *ngIf="userData">
+  <app-user-data [myData]="userData"></app-user-data>
+</ng-container> -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      {{ 'login.modal.title' | translate }}
+    </h4>
+    <i
+      class="bi bi-x"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></i>
+  </div>
+  <div class="modal-body">
+    <form
+      name="form"
+      (ngSubmit)="myform.form.valid && Submit()"
+      #myform="ngForm"
+      novalidate
+      autocomplete="off"
+    >
+      <div class="form-group">
+        <label>{{ 'login.name.label' | translate }}</label>
+        <input
+          type="text"
+          name="name"
+          class="form-control"
+          [(ngModel)]="users.name"
+          #name="ngModel"
+          [ngClass]="{ 'is-invalid': myform.submitted && name.invalid }"
+          required
+        />
+        <div *ngIf="myform.submitted && name.invalid" class="invalid-feedback">
+          <div *ngIf="name.errors.required">Name is required</div>
+        </div>
+      </div>
+      <div class="form-group" *ngIf="isAddMode">
+        <label>{{ 'login.username.label' | translate }}</label>
+        <input
+          type="text"
+          name="username"
+          class="form-control"
+          [(ngModel)]="users.username"
+          #username="ngModel"
+          [ngClass]="{ 'is-invalid': myform.submitted && username.invalid }"
+          required
+        />
+        <div
+          *ngIf="myform.submitted && username.invalid"
+          class="invalid-feedback"
+        >
+          <div *ngIf="username.errors.required">User Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'login.gender.label' | translate }}</label>
+        <select
+          name="gender"
+          class="form-control"
+          [(ngModel)]="users.gender"
+          #gender="ngModel"
+          [ngClass]="{ 'is-invalid': myform.submitted && gender.invalid }"
+          required
+        >
+          <option value=""></option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <div
+          *ngIf="myform.submitted && gender.invalid"
+          class="invalid-feedback"
+        >
+          <div *ngIf="gender.errors.required">Gender is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'login.phone_number.label' | translate }}</label>
+        <input
+          type="text"
+          name="phone_number"
+          class="form-control"
+          [(ngModel)]="users.phone_number"
+          #phone_number="ngModel"
+          [ngClass]="{
+            'is-invalid': myform.submitted && phone_number.invalid
+          }"
+          required
+          maxlength="10"
+          pattern="^((\\+91-?)|0)?[0-9]{10}$"
+        />
+        <div
+          *ngIf="myform.submitted && phone_number.invalid"
+          class="invalid-feedback"
+        >
+          <div *ngIf="phone_number.errors.required">
+            Phone Number is required
+          </div>
+          <div *ngIf="phone_number.errors.pattern">
+            Enter Only Digit
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'login.email.label' | translate }}</label>
+        <input
+          type="text"
+          name="email"
+          class="form-control"
+          [(ngModel)]="users.email"
+          #email="ngModel"
+          [ngClass]="{ 'is-invalid': myform.submitted && email.invalid }"
+          required
+          email
+          [disabled]="!isAddMode"
+        />
+        <div *ngIf="myform.submitted && email.invalid" class="invalid-feedback">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+      <div class="form-group" *ngIf="isAddMode">
+        <label>{{ 'login.password.label' | translate }}</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          [(ngModel)]="users.password"
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': myform.submitted && password.invalid }"
+          required
+          minlength="6"
+        />
+        <div
+          *ngIf="myform.submitted && password.invalid"
+          class="invalid-feedback"
+        >
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="modal.close('Save click')"
+        >
+          {{ 'login.cancel.label' | translate }}
+        </button>
+        <button
+          type="button"
+          [disabled]="!myform.valid"
+          class="btn btn-primary"
+          (click)="Submit()"
+        >
+          {{ 'login.edit.label' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,64 @@
+<div class="card">
+  <h4 class="card-header">{{ 'login.title' | translate }}</h4>
+  <div class="card-body">
+    <form
+      name="form"
+      (ngSubmit)="f.form.valid && Submit()"
+      #f="ngForm"
+      novalidate
+      autocomplete="off"
+    >
+      <div class="form-row">
+        <div class="form-group">
+          <label>{{ 'login.email.label' | translate }}</label>
+          <input
+            type="text"
+            name="email"
+            class="form-control"
+            placeholder="abc@gmail.com"
+            [(ngModel)]="users.email"
+            #email="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+            required
+            email
+          />
+          <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>{{ 'login.password.label' | translate }}</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="******"
+            class="form-control"
+            [(ngModel)]="users.password"
+            #password="ngModel"
+            [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+            required
+            minlength="6"
+          />
+          <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-2">
+          <button class="btn btn-primary mr-1">
+            {{ 'login.buttonLogin.label' | translate }}
+          </button>
+          <a [routerLink]="['/user-add']" class="btn btn-link">
+            {{ 'login.buttonRegister.label' | translate }}
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

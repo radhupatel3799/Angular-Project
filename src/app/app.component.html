@@ -1,0 +1,76 @@
+<div class="container-fluid">
+  <!-- nav -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="user">
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-item nav-link" routerLink="/home">
+            {{ 'login.home.title' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-item nav-link"
+            routerLink="/user-list"
+            routerLinkActive="active"
+          >
+            {{ 'login.user.title' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-item nav-link"
+            routerLink="/user-data"
+            routerLinkActive="active"
+          >
+            {{ 'login.usersData.title' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-item nav-link"
+            routerLink="/test/add-first"
+            routerLinkActive="active"
+          >
+          {{ 'login.test.title' | translate }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-item nav-link" (click)="logout()">
+            {{ 'login.logout.title' | translate }}
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ 'login.dropdown.title' | translate }}
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+          >
+            <li>
+              <a class="dropdown-item" (click)="useLanguage('en')">
+                {{ 'login.english.title' | translate }}
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" (click)="useLanguage('hn')">
+                {{ 'login.hindi.title' | translate }}
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
