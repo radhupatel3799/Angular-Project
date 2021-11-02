@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Track } from 'ngx-audio-player'
 
 @Component({
   selector: 'app-add-first',
@@ -61,9 +62,24 @@ export class AddFirstComponent implements OnInit {
     },
   ]
   check = 30
+  playlist: Track[] = [
+    {
+      title: 'My PlayList',
+      link: 'assets/music/yoitrax-latte.mp3',
+      artist: 'Audio One Artist',
+      duration: 126
+    },
+    {
+      title: 'My Play',
+      link: 'assets/music/Art-Of-Silence_V2.mp3',
+      artist: 'Audio One Artist',
+      duration: 253
+    },
+  ]
   constructor() {}
 
   ngOnInit(): void {
+    // this.playAudio();
     let filterData = this.dataList.filter((value, index) => {
       return value.age === this.check
     })
@@ -86,5 +102,15 @@ export class AddFirstComponent implements OnInit {
   ThirdPage() {
     this.third = true
     this.second = false
+  }
+
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "assets/music/yoitrax-latte.mp3";
+    audio.load();
+    audio.play();
+  }
+  triggerOnEnded(event: any) {
+    console.log(event,'ended')
   }
 }
