@@ -31,7 +31,9 @@ import { MatTableModule } from '@angular/material/table'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
-import { TestModuleComponent } from './test-module/test-module.component'
+import { TestModuleComponent } from './test-module/test-module.component';
+import { SliderComponent } from './slider/slider.component'
+import { SlickCarouselModule } from 'ngx-slick-carousel'
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { TestModuleComponent } from './test-module/test-module.component'
     VideoPlayerComponent,
     UserDataComponent,
     TestModuleComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -74,6 +77,7 @@ import { TestModuleComponent } from './test-module/test-module.component'
         deps: [HttpClient],
       },
     }),
+    SlickCarouselModule 
   ],
   providers: [
     {

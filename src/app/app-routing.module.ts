@@ -8,6 +8,7 @@ import { AuthGuard } from './guard/auth.guard'
 import { GoogleMapComponent } from './google-map/google-map.component'
 import { VideoPlayerComponent } from './video-player/video-player.component'
 import { UserDataComponent } from './user-data/user-data.component'
+import { SliderComponent } from './slider/slider.component'
 
 const TestModuleModule = () =>
   import('./test-module/test-module.module').then((x) => x.TestModuleModule)
@@ -52,6 +53,10 @@ const routes: Routes = [
     path: 'test',
     loadChildren: TestModuleModule,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'slider',
+    component: SliderComponent,
   },
   {
     path: '**',
