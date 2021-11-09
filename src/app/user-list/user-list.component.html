@@ -1,9 +1,11 @@
 <div class="row mt-3">
   <div class="col-md-6">
-    <h4 class="mt-2">{{ 'login.userList.label' | translate }}</h4>
+    <!-- <h4 class="mt-2">{{ 'login.userList.label' | translate }}</h4> -->
+    User List
   </div>
   <div class="col-md-2">
-    <label>{{ 'login.name.label' | translate }}</label>
+    <!-- <label>{{ 'login.name.label' | translate }}</label> -->
+    <label>Name</label>
     <input
       class="form-control"
       type="text"
@@ -14,7 +16,8 @@
     />
   </div>
   <div class="col-md-2">
-    <label>{{ 'login.phone_number.label' | translate }}</label>
+    <!-- <label>{{ 'login.phone_number.label' | translate }}</label> -->
+    <label>Phone Number</label>
     <input
       class="form-control"
       type="text"
@@ -26,7 +29,8 @@
   </div>
   <div class="col-md-2 mt-4">
     <a routerLink="/user-add" class="btn btn-sm btn-success mb-2">
-      {{ 'login.add.label' | translate }}
+      <!-- {{ 'login.add.label' | translate }} -->
+      Add User
     </a>
   </div>
 </div>
@@ -35,11 +39,16 @@
     <table class="table table-striped mt-5">
       <thead>
         <tr>
-          <th style="width: 20%;">{{ 'login.name.label' | translate }}</th>
+          <!-- <th style="width: 20%;">{{ 'login.name.label' | translate }}</th>
           <th style="width: 20%;">{{ 'login.username.label' | translate }}</th>
           <th style="width: 10%;">{{ 'login.gender.label' | translate }}</th>
           <th style="width: 20%;">{{ 'login.email.label' | translate }}</th>
-          <th style="width: 15%;">{{ 'login.name.label' | translate }}</th>
+          <th style="width: 15%;">{{ 'login.name.label' | translate }}</th> -->
+          <th style="width: 20%;">Name</th>
+          <th style="width: 20%;">User Name</th>
+          <th style="width: 10%;">Gender</th>
+          <th style="width: 20%;">Email</th>
+          <th style="width: 15%;">Phone Number</th>
           <th style="width: 15%;"></th>
         </tr>
       </thead>
@@ -49,7 +58,7 @@
             let user of users
               | filter: searchText
               | filter: searchNumber
-              | paginate: { itemsPerPage: 5, currentPage: p }
+              | paginate: { itemsPerPage: 10, currentPage: p }
           "
         >
           <td>{{ user.name }}</td>
@@ -62,13 +71,15 @@
               Edit
             </a> -->
             <button (click)="open(user._id, content)" class="btn btn-primary">
-              {{ 'login.edit.label' | translate }}
+              <!-- {{ 'login.edit.label' | translate }} -->
+              Edit
             </button>
             <button
               (click)="deleteUser(user._id)"
               class="btn btn-danger btn-delete-user"
             >
-              {{ 'login.delete.label' | translate }}
+              <!-- {{ 'login.delete.label' | translate }} -->
+              Delete
             </button>
           </td>
         </tr>
@@ -115,7 +126,8 @@
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">
-      {{ 'login.modal.title' | translate }}
+      <!-- {{ 'login.modal.title' | translate }} -->
+      Edit User
     </h4>
     <i
       class="bi bi-x"
@@ -132,7 +144,8 @@
       autocomplete="off"
     >
       <div class="form-group">
-        <label>{{ 'login.name.label' | translate }}</label>
+        <!-- <label>{{ 'login.name.label' | translate }}</label> -->
+        <label>Name</label>
         <input
           type="text"
           name="name"
@@ -147,7 +160,8 @@
         </div>
       </div>
       <div class="form-group" *ngIf="isAddMode">
-        <label>{{ 'login.username.label' | translate }}</label>
+        <!-- <label>{{ 'login.username.label' | translate }}</label> -->
+        <label>User Name</label>
         <input
           type="text"
           name="username"
@@ -166,7 +180,8 @@
       </div>
 
       <div class="form-group">
-        <label>{{ 'login.gender.label' | translate }}</label>
+        <!-- <label>{{ 'login.gender.label' | translate }}</label> -->
+        <label>Gender</label>
         <select
           name="gender"
           class="form-control"
@@ -188,7 +203,8 @@
       </div>
 
       <div class="form-group">
-        <label>{{ 'login.phone_number.label' | translate }}</label>
+        <!-- <label>{{ 'login.phone_number.label' | translate }}</label> -->
+        <label>Phone Number</label>
         <input
           type="text"
           name="phone_number"
@@ -216,7 +232,8 @@
       </div>
 
       <div class="form-group">
-        <label>{{ 'login.email.label' | translate }}</label>
+        <!-- <label>{{ 'login.email.label' | translate }}</label> -->
+        <label>Email</label>
         <input
           type="text"
           name="email"
@@ -236,7 +253,8 @@
         </div>
       </div>
       <div class="form-group" *ngIf="isAddMode">
-        <label>{{ 'login.password.label' | translate }}</label>
+        <!-- <label>{{ 'login.password.label' | translate }}</label> -->
+        <label>Password</label>
         <input
           type="password"
           name="password"
@@ -263,7 +281,8 @@
           class="btn btn-outline-dark"
           (click)="modal.close('Save click')"
         >
-          {{ 'login.cancel.label' | translate }}
+          <!-- {{ 'login.cancel.label' | translate }} -->
+          Cancel
         </button>
         <button
           type="button"
@@ -271,7 +290,8 @@
           class="btn btn-primary"
           (click)="Submit()"
         >
-          {{ 'login.edit.label' | translate }}
+          <!-- {{ 'login.edit.label' | translate }} -->
+          Edit
         </button>
       </div>
     </form>

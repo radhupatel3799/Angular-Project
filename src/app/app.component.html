@@ -1,11 +1,13 @@
-<div class="container-fluid">
+<div class="content container-fluid" role="main">
+  <span>{{ title }} app is running!</span>
   <!-- nav -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="user">
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-item nav-link" routerLink="/home">
-            {{ 'login.home.title' | translate }}
+            <!-- {{ 'login.home.title' | translate }} -->
+            Home
           </a>
         </li>
         <li class="nav-item">
@@ -14,7 +16,8 @@
             routerLink="/user-list"
             routerLinkActive="active"
           >
-            {{ 'login.user.title' | translate }}
+            <!-- {{ 'login.user.title' | translate }} -->
+            User-List
           </a>
         </li>
         <li class="nav-item">
@@ -23,7 +26,8 @@
             routerLink="/user-data"
             routerLinkActive="active"
           >
-            {{ 'login.usersData.title' | translate }}
+            <!-- {{ 'login.usersData.title' | translate }} -->
+            User-Data
           </a>
         </li>
         <li class="nav-item">
@@ -32,12 +36,14 @@
             routerLink="/test/add-first"
             routerLinkActive="active"
           >
-          {{ 'login.test.title' | translate }}
+          <!-- {{ 'login.test.title' | translate }} -->
+          Test Module
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-item nav-link" (click)="logout()">
-            {{ 'login.logout.title' | translate }}
+            <!-- {{ 'login.logout.title' | translate }} -->
+            Logout
           </a>
         </li>
       </ul>
@@ -51,7 +57,8 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            {{ 'login.dropdown.title' | translate }}
+            <!-- {{ 'login.dropdown.title' | translate }} -->
+            Select Langulage
           </a>
           <ul
             class="dropdown-menu dropdown-menu-end"
@@ -59,12 +66,14 @@
           >
             <li>
               <a class="dropdown-item" (click)="useLanguage('en')">
-                {{ 'login.english.title' | translate }}
+                <!-- {{ 'login.english.title' | translate }} -->
+                English
               </a>
             </li>
             <li>
               <a class="dropdown-item" (click)="useLanguage('hn')">
-                {{ 'login.hindi.title' | translate }}
+                <!-- {{ 'login.hindi.title' | translate }} -->
+                Hindi
               </a>
             </li>
           </ul>

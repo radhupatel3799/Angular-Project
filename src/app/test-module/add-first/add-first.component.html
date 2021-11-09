@@ -1,11 +1,13 @@
-<p>{{ 'login.hello.label' | translate }} ! Radhika</p>
-
+<!-- <p>{{ 'login.hello.label' | translate }} ! Radhika</p> -->
+<p>Hello ! Radhika</p>
 <div class="col-md-2 mt-4">
   <a class="btn btn-sm btn-primary" (click)="SecondPage()">
-    {{ 'login.add_second' | translate }}
+    <!-- {{ 'login.add_second' | translate }} -->
+    Add Second
   </a>
   <a class="btn btn-sm btn-primary" (click)="ThirdPage()">
-    {{ 'login.add_third' | translate }}
+    <!-- {{ 'login.add_third' | translate }} -->
+    Add Third
   </a>
 </div>
 <app-add-second *ngIf="second"></app-add-second>

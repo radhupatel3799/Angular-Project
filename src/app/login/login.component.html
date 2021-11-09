@@ -1,5 +1,6 @@
 <div class="card">
-  <h4 class="card-header">{{ 'login.title' | translate }}</h4>
+  <!-- <h4 class="card-header">{{ 'login.title' | translate }}</h4> -->
+  <h4 class="card-header">Login</h4>
   <div class="card-body">
     <form
       name="form"
@@ -10,7 +11,8 @@
     >
       <div class="form-row">
         <div class="form-group">
-          <label>{{ 'login.email.label' | translate }}</label>
+          <!-- <label>{{ 'login.email.label' | translate }}</label> -->
+          <label>Email</label>
           <input
             type="text"
             name="email"
@@ -30,7 +32,8 @@
           </div>
         </div>
         <div class="form-group">
-          <label>{{ 'login.password.label' | translate }}</label>
+          <!-- <label>{{ 'login.password.label' | translate }}</label> -->
+          <label>Password</label>
           <input
             type="password"
             name="password"
@@ -52,10 +55,12 @@
 
         <div class="text-center mt-2">
           <button class="btn btn-primary mr-1">
-            {{ 'login.buttonLogin.label' | translate }}
+            <!-- {{ 'login.buttonLogin.label' | translate }} -->
+            Login
           </button>
           <a [routerLink]="['/user-add']" class="btn btn-link">
-            {{ 'login.buttonRegister.label' | translate }}
+            <!-- {{ 'login.buttonRegister.label' | translate }} -->
+            Register
           </a>
         </div>
       </div>

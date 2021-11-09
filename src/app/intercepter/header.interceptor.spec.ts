@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
+import { AppModule } from '../app.module';
 
 import { HeaderInterceptor } from './header.interceptor';
 
 describe('HeaderInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
+    imports: [AppModule],
     providers: [
       HeaderInterceptor
-      ]
+    ]
   }));
 
   it('should be created', () => {

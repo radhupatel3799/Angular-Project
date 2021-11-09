@@ -36,7 +36,7 @@ export class UserDataComponent implements OnInit {
         this.users = res.data
         console.log(this.users, 'data')
       })
-    this.users = this.getTableData(this.start, this.end)
+    // this.users = this.getTableData(this.start, this.end)
     this.updateIndex()
     // console.log(this.myData, 'hey')
   }
@@ -49,15 +49,15 @@ export class UserDataComponent implements OnInit {
     const buffer = 50
     const limit = tableScrollHeight - tableViewHeight - buffer
     if (scrollLocation > limit) {
-      let data = this.getTableData(this.start, this.end)
-      this.users = this.users.concat(data)
+      // let data = this.getTableData(this.start, this.end)
+      // this.users = this.users.concat(data)
       this.updateIndex()
     }
   }
 
-  getTableData(start: any, end: any) {
-    return this.users.filter((value, index) => index >= start && index < end)
-  }
+  // getTableData(start: any, end: any) {
+  //   return this.users.filter((value, index) => index >= start && index < end)
+  // }
 
   updateIndex() {
     this.start = this.end

@@ -23,7 +23,7 @@ export class UserListComponent implements OnInit {
 
   users: User[]
   userData: any[]
-  dtOptions: DataTables.Settings = {}
+  dtOptions: any = {}
   searchText: any
   searchNumber: number
   id: string

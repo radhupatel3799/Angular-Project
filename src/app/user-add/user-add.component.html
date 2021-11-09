@@ -1,9 +1,11 @@
 <div class="card">
   <h4 class="card-header" *ngIf="isAddMode">
-    {{ 'login.add.label' | translate }}
+    <!-- {{ 'login.add.label' | translate }} -->
+    Add Users
   </h4>
   <h4 class="card-header" *ngIf="!isAddMode">
-    {{ 'login.modal.title' | translate }}
+    <!-- {{ 'login.modal.title' | translate }} -->
+    Edit Users
   </h4>
   <div class="card-body">
     <form
@@ -78,7 +80,7 @@
       </button> -->
         <!-- Angular2 Multiselect Dropdown -->
         <div class="mt-3">
-          <angular2-multiselect
+          <!-- <angular2-multiselect
             [data]="dropdownList"
             name="selectItem"
             [(ngModel)]="selectedItems"
@@ -87,10 +89,11 @@
             (onDeSelect)="OnItemDeSelect($event)"
             (onSelectAll)="onSelectAll($event)"
             (onDeSelectAll)="onDeSelectAll($event)"
-          ></angular2-multiselect>
+          ></angular2-multiselect> -->
         </div>
         <div class="form-group">
-          <label>{{ 'login.name.label' | translate }}</label>
+          <!-- <label>{{ 'login.name.label' | translate }}</label> -->
+          <label>Name</label>
           <input
             type="text"
             name="name"
@@ -108,7 +111,8 @@
           </div>
         </div>
         <div class="form-group" *ngIf="isAddMode">
-          <label>{{ 'login.username.label' | translate }}</label>
+          <!-- <label>{{ 'login.username.label' | translate }}</label> -->
+          <label>UserName</label>
           <input
             type="text"
             name="username"
@@ -127,7 +131,8 @@
         </div>
 
         <div class="form-group">
-          <label>{{ 'login.gender.label' | translate }}</label>
+          <!-- <label>{{ 'login.gender.label' | translate }}</label> -->
+          <label>Gender</label>
           <select
             name="gender"
             class="form-control"
@@ -149,7 +154,8 @@
         </div>
 
         <div class="form-group">
-          <label>{{ 'login.phone_number.label' | translate }}</label>
+          <!-- <label>{{ 'login.phone_number.label' | translate }}</label> -->
+          <label>Phone Number</label>
           <input
             type="text"
             name="phone_number"
@@ -177,7 +183,8 @@
         </div>
 
         <div class="form-group">
-          <label>{{ 'login.email.label' | translate }}</label>
+          <!-- <label>{{ 'login.email.label' | translate }}</label> -->
+          <label>Email</label>
           <input
             type="text"
             name="email"
@@ -200,7 +207,8 @@
           </div>
         </div>
         <div class="form-group" *ngIf="isAddMode">
-          <label>{{ 'login.password.label' | translate }}</label>
+          <!-- <label>{{ 'login.password.label' | translate }}</label> -->
+          <label>Password</label>
           <input
             type="password"
             name="password"
@@ -224,7 +232,8 @@
 
         <div class="text-center mt-2">
           <button class="btn btn-primary" *ngIf="isAddMode">
-            {{ 'login.buttonRegister.label' | translate }}
+            <!-- {{ 'login.buttonRegister.label' | translate }} -->
+            Register
           </button>
           <a
             [routerLink]="['/login']"
@@ -232,10 +241,12 @@
             type="reset"
             *ngIf="isAddMode"
           >
-            {{ 'login.cancel.label' | translate }}
+            <!-- {{ 'login.cancel.label' | translate }} -->
+            Cancel
           </a>
           <button class="btn btn-primary mr-1" *ngIf="!isAddMode">
-            {{ 'login.edit.label' | translate }}
+            <!-- {{ 'login.edit.label' | translate }} -->
+            Edit
           </button>
         </div>
       </div>
