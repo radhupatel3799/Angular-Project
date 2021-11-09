@@ -21,8 +21,10 @@ describe('LoginComponent', () => {
   });
 
   it('should create', () => {
-    // component.users.email.setValue("radhu@gmail.com");
-    // component.users.password.setValue("radhu123");
     expect(component).toBeTruthy();
   });
+
+  it('submitted should be true when onSubmit()', () => {
+    expect(component.submitted).toBeFalsy();
+  })
 });
