@@ -53,23 +53,26 @@
           </div>
         </div>
 
-        <div class="text-center mt-2">
+        <div class="d-grid gap-2 mt-3">
           <button class="btn btn-primary mr-1">
             <!-- {{ 'login.buttonLogin.label' | translate }} -->
             Login
-          </button>
-          <a [routerLink]="['/user-add']" class="btn btn-link">
+          </button>         
+        </div>
+        <hr>
+        <div class="d-grid gap-2 col-6 mx-auto mt-2">
+          <a [routerLink]="['/user-add']" class="btn btn-success">
             <!-- {{ 'login.buttonRegister.label' | translate }} -->
             Register
-          </a>
+          </a>        
         </div>
       </div>
     </form>
-    <div>
-      <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()">
+    <div class="text-center mt-2">
+      <button class="btn btn-social-icon" (click)="signInWithGoogle()">
         <i class="bi bi-google"></i>
       </button>
-      <button class="btn btn-social-icon btn-google" (click)="signInWithFB()">
+      <button class="btn btn-social-icon" (click)="signInWithFB()">
         <i class="bi bi-facebook"></i>
       </button>
     </div>

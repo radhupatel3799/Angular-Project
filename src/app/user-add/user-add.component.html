@@ -53,7 +53,7 @@
         </div> -->
 
         <!--  Angular Dropzone -->
-        <!-- <div ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+        <div ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
           <ngx-dropzone-label>
             <div>
               <h2>+</h2>
@@ -66,10 +66,10 @@
             [removable]="true"
             (removed)="onRemove(f)"
           ></ngx-dropzone-image-preview>
-        </div> -->
+        </div>
 
         <!-- Csv File Upload -->
-        <input type="file" accept=".pdf" (change)="handleFileSelect($event)" />
+        <!-- <input type="file" accept=".pdf" (change)="handleFileSelect($event)" /> -->
         <!-- <button
         type="button"
         *ngIf="removeUpload"
@@ -80,7 +80,7 @@
       </button> -->
         <!-- Angular2 Multiselect Dropdown -->
         <div class="mt-3">
-          <!-- <angular2-multiselect
+          <angular2-multiselect
             [data]="dropdownList"
             name="selectItem"
             [(ngModel)]="selectedItems"
@@ -89,7 +89,7 @@
             (onDeSelect)="OnItemDeSelect($event)"
             (onSelectAll)="onSelectAll($event)"
             (onDeSelectAll)="onDeSelectAll($event)"
-          ></angular2-multiselect> -->
+          ></angular2-multiselect>
         </div>
         <div class="form-group">
           <!-- <label>{{ 'login.name.label' | translate }}</label> -->
@@ -101,6 +101,7 @@
             [(ngModel)]="users.name"
             #name="ngModel"
             [ngClass]="{ 'is-invalid': myform.submitted && name.invalid }"
+            pattern="^[a-zA-Z\s]*$"
             required
           />
           <div
@@ -108,6 +109,9 @@
             class="invalid-feedback"
           >
             <div *ngIf="name.errors.required">Name is required</div>
+            <div *ngIf="name.errors.pattern">
+              Enter Only Character
+            </div>
           </div>
         </div>
         <div class="form-group" *ngIf="isAddMode">
@@ -230,24 +234,30 @@
           </div>
         </div>
 
-        <div class="text-center mt-2">
-          <button class="btn btn-primary" *ngIf="isAddMode">
-            <!-- {{ 'login.buttonRegister.label' | translate }} -->
-            Register
-          </button>
-          <a
-            [routerLink]="['/login']"
-            class="btn btn-secondary ml-1"
-            type="reset"
-            *ngIf="isAddMode"
-          >
-            <!-- {{ 'login.cancel.label' | translate }} -->
-            Cancel
-          </a>
-          <button class="btn btn-primary mr-1" *ngIf="!isAddMode">
-            <!-- {{ 'login.edit.label' | translate }} -->
-            Edit
-          </button>
+        <div class="form-group">
+          <div class="row">
+            <div class="d-grid gap-2 col-6 mt-2">
+              <button class="btn btn-success" *ngIf="isAddMode">
+                <!-- {{ 'login.buttonRegister.label' | translate }} -->
+                Register
+              </button>
+              <button class="btn btn-primary mr-1" *ngIf="!isAddMode">
+                <!-- {{ 'login.edit.label' | translate }} -->
+                Edit
+              </button>
+            </div>
+            <div class="d-grid gap-2 col-6 mt-2">
+              <a
+                [routerLink]="['/login']"
+                class="btn btn-secondary ml-1"
+                type="reset"
+                *ngIf="isAddMode"
+              >
+                <!-- {{ 'login.cancel.label' | translate }} -->
+                Cancel
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </form>

@@ -4,5 +4,10 @@
     margin-left: 35%;
 }
 .bi-google{
-    color: skyblue;
+    color: rgb((66, 133, 244));
+    font-size: 25px;
+}
+.bi-facebook{
+    color: rgb(66 103 178);
+    font-size: 25px;
 }
