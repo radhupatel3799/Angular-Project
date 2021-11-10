@@ -39,7 +39,8 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider,
   SocialLoginModule,
-} from 'angularx-social-login'
+} from 'angularx-social-login';
+import { DatepickerComponent } from './datepicker/datepicker.component'
 
 let config = new AuthServiceConfig([
   {
@@ -70,6 +71,7 @@ export function provideConfig() {
     UserDataComponent,
     TestModuleComponent,
     SliderComponent,
+    DatepickerComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

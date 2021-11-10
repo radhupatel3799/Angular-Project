@@ -9,6 +9,7 @@ import { GoogleMapComponent } from './google-map/google-map.component'
 import { VideoPlayerComponent } from './video-player/video-player.component'
 import { UserDataComponent } from './user-data/user-data.component'
 import { SliderComponent } from './slider/slider.component'
+import { DatepickerComponent } from './datepicker/datepicker.component'
 
 const TestModuleModule = () =>
   import('./test-module/test-module.module').then((x) => x.TestModuleModule)
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'slider',
     component: SliderComponent,
+  },
+  {
+    path: 'datepicker',
+    component: DatepickerComponent,
   },
   {
     path: '**',
