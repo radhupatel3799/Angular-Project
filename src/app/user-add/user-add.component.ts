@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { ToastrService } from 'ngx-toastr'
 import { first } from 'rxjs/operators'
-import { AuthService } from '../services/auth.service'
+import { UserService } from '../services/user.service'
 
 @Component({
   selector: 'app-user-add',
@@ -36,7 +36,7 @@ export class UserAddComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userService: AuthService,
+    private userService: UserService,
     private toastr: ToastrService,
     private changeDetectorRef: ChangeDetectorRef,
   ) {}

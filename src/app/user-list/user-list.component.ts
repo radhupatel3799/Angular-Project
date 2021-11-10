@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core'
 import { first } from 'rxjs/operators'
 import { User } from '../models/user'
-import { AuthService } from '../services/auth.service'
 import swal from 'sweetalert2'
 import { ToastrService } from 'ngx-toastr'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap'
 import { Router } from '@angular/router'
+import { UserService } from '../services/user.service'
 
 @Component({
   selector: 'app-user-list',
@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit {
   submitted = false
 
   constructor(
-    private listService: AuthService,
+    private listService: UserService,
     private toastr: ToastrService,
     private modalService: NgbModal,
     private router: Router,

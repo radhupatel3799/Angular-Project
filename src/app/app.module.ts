@@ -31,10 +31,32 @@ import { MatTableModule } from '@angular/material/table'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
-import { TestModuleComponent } from './test-module/test-module.component';
+import { TestModuleComponent } from './test-module/test-module.component'
 import { SliderComponent } from './slider/slider.component'
 import { SlickCarouselModule } from 'ngx-slick-carousel'
+import {
+  AuthServiceConfig,
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialLoginModule,
+} from 'angularx-social-login'
 
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider(
+      '301514769861-3semh9017faoosb6015b9js87sbsgkto.apps.googleusercontent.com',
+    ),
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('654810455510289'),
+  },
+])
+
+export function provideConfig() {
+  return config
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,13 +99,18 @@ import { SlickCarouselModule } from 'ngx-slick-carousel'
         deps: [HttpClient],
       },
     }),
-    SlickCarouselModule 
+    SlickCarouselModule,
+    SocialLoginModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HeaderInterceptor,
       multi: true,
+    },
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig,
     },
   ],
   bootstrap: [AppComponent],

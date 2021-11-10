@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { User } from './models/user'
-import { AuthService } from './services/auth.service'
+import { UserService } from './services/user.service'
 // import { TranslateService } from '@ngx-translate/core'
 
 @Component({
@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'Angular-app'
   user: User
 
-  constructor(private userService: AuthService) {
+  constructor(private userService: UserService) {
     this.userService.user.subscribe((x) => (this.user = x))
     // translate.setDefaultLang('en')
   }

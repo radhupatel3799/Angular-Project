@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { AuthService } from '../services/auth.service'
+import { AuthService, FacebookLoginProvider, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +14,22 @@ export class LoginComponent implements OnInit {
   users: any = {}
   submitted = false
   returnUrl: string
+  private user: SocialUser;
+  private loggedIn: boolean;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private loginService: AuthService,
-    private toastr: ToastrService
+    private loginService: UserService,
+    private toastr: ToastrService,
+    private authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.authService.authState.subscribe((user) => {
+    //   this.user = user;
+    //   this.loggedIn = (user != null);
+    // });
+  }
 
   Submit() {
     this.submitted = true
@@ -41,5 +50,19 @@ export class LoginComponent implements OnInit {
         console.log(error)
       },
     )
+  }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    console.log(this.authService,"Google Data")
+  }
+ 
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    console.log(this.authService,"Facebook Data")
+  } 
+ 
+  signOut(): void {
+    this.authService.signOut();
   }
 }

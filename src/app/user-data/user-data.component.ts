@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core'
 import { ToastrService } from 'ngx-toastr'
 import { first } from 'rxjs/operators'
 import { User } from '../models/user'
-import { AuthService } from '../services/auth.service'
+import { UserService } from '../services/user.service'
 
 @Component({
   selector: 'app-user-data',
@@ -24,7 +24,7 @@ export class UserDataComponent implements OnInit {
   }
   users: User[]
   constructor(
-    private listService: AuthService,
+    private listService: UserService,
     private toastr: ToastrService,
   ) {}
 
