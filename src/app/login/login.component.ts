@@ -24,12 +24,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  ngOnInit(): void {
-    // this.authService.authState.subscribe((user) => {
-    //   this.user = user;
-    //   this.loggedIn = (user != null);
-    // });
-  }
+  ngOnInit(): void {}
 
   Submit() {
     this.submitted = true
