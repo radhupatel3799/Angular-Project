@@ -9,5 +9,4 @@ export class User {
     token?: string;
     isDeleting?:boolean;
     data?:object;
-    status?:number;
 }

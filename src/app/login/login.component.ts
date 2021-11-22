@@ -22,21 +22,22 @@ export class LoginComponent implements OnInit {
     private loginService: UserService,
     private toastr: ToastrService,
     private authService: AuthService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   Submit() {
     this.submitted = true
     this.loginService.login(this.users.email, this.users.password).subscribe(
-      (res) => {
-        if ((res.status == 200)) {
+      (res: any) => {
+        console.log(res)
+        if (res.status == 200) {
           //store token in localstorage
           localStorage.setItem('token', res.token)
-          localStorage.setItem('email',this.users.email)
+          localStorage.setItem('email', this.users.email)
           this.router.navigateByUrl('/home')
-          this.toastr.success('Login Successfully', 'Success!');          
-        }else{
+          this.toastr.success('Login Successfully', 'Success!');
+        } else {
           this.toastr.error('Invalid Username or Password', 'Error!');
         }
       },
@@ -49,14 +50,14 @@ export class LoginComponent implements OnInit {
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    console.log(this.authService,"Google Data")
+    console.log(this.authService, "Google Data")
   }
- 
+
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-    console.log(this.authService,"Facebook Data")
-  } 
- 
+    console.log(this.authService, "Facebook Data")
+  }
+
   signOut(): void {
     this.authService.signOut();
   }

@@ -58,7 +58,7 @@
             let user of users
               | filter: searchText
               | filter: searchNumber
-              | paginate: { itemsPerPage: 10, currentPage: p }
+              | paginate: { itemsPerPage: 5, currentPage: p }
           "
         >
           <td>{{ user.name }}</td>

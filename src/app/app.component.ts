@@ -13,7 +13,12 @@ export class AppComponent {
   user: User
 
   constructor(private userService: UserService) {
-    this.userService.user.subscribe((x) => (this.user = x))
+    this.userService.user.subscribe((res: any) => {
+      if (res.status == 200) {
+        console.log(res);
+        (this.user = res)
+      }
+    })
     // translate.setDefaultLang('en')
   }
 
